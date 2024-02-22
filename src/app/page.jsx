@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Home = () => {
   return (
-    <Box sx={{ justifyContent: 'space-between', display: 'flex' }}>
+    <Box>
       <Link href="/login">Login</Link>
       <Link href="/register">Register</Link>
     </Box>
