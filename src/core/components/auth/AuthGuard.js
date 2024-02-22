@@ -1,30 +1,29 @@
-'use client';
+'use client'
 
-// ** React Imports
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-
-// ** Next Import
-import { useRouter } from 'next/navigation';
-
-// ** Hooks Import
 import { useAuth } from 'src/hooks/useAuth';
 
 const AuthGuard = props => {
   const { children } = props
-  const auth = useAuth()
-  const router = useRouter()
+  const auth = useAuth();
+  const router = useRouter();
+  const path = usePathname();
 
-  useEffect(
-    () => {
-      if (!router.isReady) {
-        return;
-      }
-      if (auth.user === null && !window.localStorage.getItem('userData')) {
+  useEffect(() => {
+    if (auth.user === null && !window.localStorage.getItem('userData')) {
+      const isAuth = [
+        path === '/login/',
+        path === '/register/',
+        path === '/verify-email/',
+        path === '/forgot-password/',
+      ].some(Boolean);
+
+      if (!isAuth) {
         router.push('/login')
       }
-    },
-    [auth.user, router]
-  )
+    }
+  }, [auth.user, path, router])
 
   return <>{children}</>
 }
