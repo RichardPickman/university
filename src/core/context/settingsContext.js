@@ -71,13 +71,15 @@ export const SettingsProvider = ({ children, pageSettings }) => {
 
   useEffect(() => {
     const restoredSettings = restoreSettings()
+
     if (restoredSettings) {
       setSettings({ ...restoredSettings })
     }
     if (pageSettings) {
       setSettings({ ...settings, ...pageSettings })
     }
-  }, [pageSettings, settings])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageSettings])
 
   useEffect(() => {
     if (settings.layout === 'horizontal' && settings.mode === 'semi-dark') {

@@ -10,10 +10,8 @@ import spacing from './spacing'
 import typography from './typography'
 
 const themeOptions = (settings, overrideMode) => {
-  // ** Vars
   const { skin, mode, direction, themeColor } = settings
 
-  // ** Create New object before removing user component overrides and typography objects from userThemeOptions
   const userThemeConfig = Object.assign({}, UserThemeOptions())
 
   const mergedThemeConfig = deepmerge(

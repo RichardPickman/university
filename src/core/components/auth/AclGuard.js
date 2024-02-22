@@ -25,7 +25,7 @@ import getHomeRoute from 'src/layouts/components/acl/getHomeRoute';
 
 const AclGuard = props => {
   // ** Props
-  const { aclAbilities, children, guestGuard = true, authGuard = true } = props
+  const { aclAbilities, children, guestGuard = true, authGuard = false } = props
 
   // ** Hooks
   const auth = useAuth()
@@ -36,15 +36,12 @@ const AclGuard = props => {
 
   useEffect(() => {
     if (auth.user && auth.user.role && !guestGuard && router.route === '/') {
-      console.log('first if')
       const homeRoute = getHomeRoute(auth.user.role)
       router.push(homeRoute)
     }
   }, [auth.user, guestGuard, router])
 
   if (auth.user && !ability) {
-    console.log('second if')
-
     ability = buildAbilityFor(auth.user.role, aclAbilities.subject)
     if (router.route === '/') {
       return <Spinner />
@@ -52,7 +49,6 @@ const AclGuard = props => {
   }
 
   if (guestGuard || router.route === '/404' || router.route === '/500' || !authGuard) {
-    console.log('third if')
     if (auth.user && ability) {
       return <AbilityContext.Provider value={ability}>{children}</AbilityContext.Provider>
     } else {
