@@ -1,4 +1,4 @@
-export default {
+const decorationOverride = {
   MuiLink: {
     styleOverrides: {
       root: {
@@ -6,4 +6,6 @@ export default {
       }
     }
   }
-}
+};
+
+export default decorationOverride;

@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useUserStore } from 'src/context/AuthContext';
+import { useUserStore } from 'src/store/userStore';
 
 export const useAuth = () => {
     const auth = useUserStore().getState();
@@ -24,7 +24,7 @@ export const useAuth = () => {
             .then(() => {
                 const url = new URL("http://localhost:3000" + '/verify-email');
 
-                url.searchParams.set('email', encodeURI(params.email));
+                url.searchParams.set('email', encodeURI(data.email));
 
                 router.push(url.href);
             })

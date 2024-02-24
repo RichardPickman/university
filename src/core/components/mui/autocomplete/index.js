@@ -1,9 +1,9 @@
 // ** React Import
-import { forwardRef } from 'react'
+import { forwardRef } from 'react';
 
 // ** MUI Import
-import Paper from '@mui/material/Paper'
-import Autocomplete from '@mui/material/Autocomplete'
+import Autocomplete from '@mui/material/Autocomplete';
+import Paper from '@mui/material/Paper';
 
 const CustomAutocomplete = forwardRef((props, ref) => {
   return (
@@ -15,6 +15,7 @@ const CustomAutocomplete = forwardRef((props, ref) => {
       PaperComponent={props => <Paper {...props} className='custom-autocomplete-paper' />}
     />
   )
-})
+});
 
+CustomAutocomplete.displayName = 'CustomAutocomplete';
 export default CustomAutocomplete

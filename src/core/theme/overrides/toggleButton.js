@@ -1,4 +1,4 @@
-export default {
+const borderRadiusOverride = {
   MuiToggleButtonGroup: {
     styleOverrides: {
       root: {
@@ -14,3 +14,5 @@ export default {
     }
   }
 }
+
+export default borderRadiusOverride

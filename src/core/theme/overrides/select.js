@@ -1,4 +1,4 @@
-export default {
+const widthOverride = {
   MuiSelect: {
     styleOverrides: {
       select: {
@@ -9,4 +9,6 @@ export default {
       }
     }
   }
-}
+};
+
+export default widthOverride;

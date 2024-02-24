@@ -1,6 +1,6 @@
 "use client";
 
-import { CacheProvider } from "@emotion/react";
+import { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
 import { defaultACLObj } from "src/configs/acl";
 import AclGuard from "src/core/components/auth/AclGuard";
@@ -13,9 +13,6 @@ import {
 } from "src/core/context/settingsContext";
 import ReactHotToast from "src/core/styles/libs/react-hot-toast";
 import ThemeComponent from "src/core/theme/ThemeComponent";
-import { createEmotionCache } from "src/core/utils/create-emotion-cache";
-
-const clientSideEmotionCache = createEmotionCache();
 
 const Guard = ({ children, authGuard, guestGuard }) => {
     if (guestGuard) {
@@ -30,13 +27,12 @@ const Guard = ({ children, authGuard, guestGuard }) => {
 };
 
 export const Providers = ({ children }) => {
-    const emotionCache = clientSideEmotionCache;
     const authGuard = false;
     const guestGuard = true;
     const aclAbilities = defaultACLObj;
 
     return (
-        <CacheProvider value={emotionCache}>
+        <Suspense fallback={<Spinner />}>
             <SettingsProvider>
                 <SettingsConsumer>
                     {({ settings }) => {
@@ -67,6 +63,6 @@ export const Providers = ({ children }) => {
                     }}
                 </SettingsConsumer>
             </SettingsProvider>
-        </CacheProvider>
+        </Suspense>
     );
 };

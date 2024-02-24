@@ -2,6 +2,7 @@
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import Radio from '@mui/material/Radio'
+import Image from 'next/image'
 
 const CustomRadioImg = props => {
   // ** Props
@@ -34,7 +35,7 @@ const CustomRadioImg = props => {
             }
           }}
         >
-          {typeof img === 'string' ? <img src={img} alt={alt ?? `radio-image-${value}`} /> : img}
+          {typeof img === 'string' ? <Image src={img} alt={alt ?? `radio-image-${value}`} /> : img}
           <Radio
             name={name}
             size='small'

@@ -43,9 +43,11 @@ const Avatar = forwardRef((props, ref) => {
 
   return <MuiAvatar ref={ref} {...props} sx={!src && skin && color ? Object.assign(colors[color], sx) : sx} />
 })
+
 Avatar.defaultProps = {
   skin: 'filled',
   color: 'primary'
 }
+Avatar.displayName = 'Avatar';
 
 export default Avatar

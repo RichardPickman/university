@@ -11,6 +11,7 @@ import Icon from 'src/core/components/icon'
 import { hexToRGBA } from 'src/core/utils/hex-to-rgba'
 
 // ** Custom Components Imports
+import Image from 'next/image'
 import CustomChip from 'src/core/components/mui/chip'
 
 // ** Styled Component for the wrapper of whole component
@@ -73,7 +74,7 @@ const PlanDetails = props => {
         />
       ) : null}
       <Box sx={{ mb: 4, display: 'flex', justifyContent: 'center' }}>
-        <img
+        <Image
           width={data?.imgWidth}
           src={`${data?.imgSrc}`}
           height={data?.imgHeight}

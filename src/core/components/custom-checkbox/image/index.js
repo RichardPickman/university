@@ -1,7 +1,8 @@
 // ** MUI Imports
 import Box from '@mui/material/Box'
-import Grid from '@mui/material/Grid'
 import Checkbox from '@mui/material/Checkbox'
+import Grid from '@mui/material/Grid'
+import Image from 'next/image'
 
 const CustomCheckboxImg = props => {
   // ** Props
@@ -32,14 +33,14 @@ const CustomCheckboxImg = props => {
             ...(selected.includes(value)
               ? { borderColor: `${color}.main` }
               : {
-                  '&:hover': { borderColor: theme => `rgba(${theme.palette.customColors.main}, 0.25)` },
-                  '&:not(:hover)': {
-                    '& .MuiCheckbox-root': { display: 'none' }
-                  }
-                })
+                '&:hover': { borderColor: theme => `rgba(${theme.palette.customColors.main}, 0.25)` },
+                '&:not(:hover)': {
+                  '& .MuiCheckbox-root': { display: 'none' }
+                }
+              })
           }}
         >
-          {typeof img === 'string' ? <img src={img} alt={alt ?? `checkbox-image-${value}`} /> : img}
+          {typeof img === 'string' ? <Image src={img} alt={alt ?? `checkbox-image-${value}`} /> : img}
           <Checkbox
             size='small'
             color={color}

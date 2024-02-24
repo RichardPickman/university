@@ -1,9 +1,6 @@
 'use client';
 
-// ** React Imports
 import { createContext, useEffect, useState } from 'react';
-
-// ** ThemeConfig Import
 import themeConfig from 'src/configs/themeConfig';
 
 const initialSettings = {

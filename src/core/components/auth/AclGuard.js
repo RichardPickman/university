@@ -24,19 +24,17 @@ import { useAuth } from 'src/hooks/useAuth';
 import getHomeRoute from 'src/layouts/components/acl/getHomeRoute';
 
 const AclGuard = props => {
-  // ** Props
   const { aclAbilities, children, guestGuard = true, authGuard = false } = props
 
-  // ** Hooks
   const auth = useAuth()
   const router = useRouter()
 
-  // ** Vars
   let ability
 
   useEffect(() => {
     if (auth.user && auth.user.role && !guestGuard && router.route === '/') {
       const homeRoute = getHomeRoute(auth.user.role)
+
       router.push(homeRoute)
     }
   }, [auth.user, guestGuard, router])
@@ -57,7 +55,6 @@ const AclGuard = props => {
   }
 
   if (ability && auth.user && ability.can(aclAbilities.action, aclAbilities.subject)) {
-    console.log('fourth if')
     if (router.route === '/') {
       return <Spinner />
     }

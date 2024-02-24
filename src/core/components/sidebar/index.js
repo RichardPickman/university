@@ -1,36 +1,37 @@
+'use client';
+
 // ** React Imports
-import { Fragment, useEffect } from 'react'
+import { useEffect } from 'react';
 
 // ** MUI Imports
-import Backdrop from '@mui/material/Backdrop'
-import Box from '@mui/material/Box'
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { Button } from '@mui/material';
+import Box from '@mui/material/Box';
 
 const Sidebar = props => {
-  // ** Props
-  const { sx, show, direction, children, hideBackdrop, onOpen, onClose, backDropClick } = props
+  const { sx, show, direction, children, onOpen, onClose } = props
 
-  const handleBackdropClick = () => {
-    if (backDropClick) {
-      backDropClick()
-    }
-  }
   useEffect(() => {
     if (show && onOpen) {
       onOpen()
     }
+
     if (show === false && onClose) {
       onClose()
     }
   }, [onClose, onOpen, show])
 
   return (
-    <Fragment>
+    <aside>
       <Box
         sx={{
           top: 0,
           height: '100%',
+          minWidth: '14rem',
           zIndex: 'drawer',
           position: 'absolute',
+          backgroundColor: '#12AB2C',
           transition: 'all 0.25s ease-in-out',
           backgroundColor: 'background.paper',
           ...(show ? { opacity: 1 } : { opacity: 0 }),
@@ -42,15 +43,24 @@ const Sidebar = props => {
       >
         {children}
       </Box>
-      {hideBackdrop ? null : (
-        <Backdrop
-          open={show}
-          transitionDuration={250}
-          onClick={handleBackdropClick}
-          sx={{ position: 'absolute', zIndex: theme => theme.zIndex.drawer - 1 }}
-        />
-      )}
-    </Fragment>
+      <Button
+        sx={{
+          left: '14rem',
+          position: 'absolute',
+          backgroundColor: 'background.paper',
+          transition: 'all 0.25s ease-in-out',
+          borderTopLeftRadius: 0,
+          borderBottomLeftRadius: 0,
+          textAlign: 'center',
+          ...(direction === 'right'
+            ? { left: 'auto', right: show ? '14rem' : 0 }
+            : { right: 'auto', left: show ? '14rem' : 0 }),
+        }}
+        onClick={show ? onClose : onOpen}
+      >
+        {show ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+      </Button>
+    </aside >
   )
 }
 

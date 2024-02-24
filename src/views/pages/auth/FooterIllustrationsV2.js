@@ -1,9 +1,11 @@
 // ** MUI Components
-import useMediaQuery from '@mui/material/useMediaQuery'
 import { styled, useTheme } from '@mui/material/styles'
+import useMediaQuery from '@mui/material/useMediaQuery'
+import Image from 'next/image'
+import { useStaticImages } from 'src/hooks/useStaticImages'
 
 // Styled Components
-const MaskImg = styled('img')(({ theme }) => ({
+const MaskImg = styled(Image)(({ theme }) => ({
   bottom: 0,
   height: 300,
   width: '100%',
@@ -22,6 +24,9 @@ const FooterIllustrationsV2 = props => {
 
   // ** Vars
   const hidden = useMediaQuery(theme.breakpoints.down('md'))
+
+  const { src } = useStaticImages(`misc-mask-${theme.palette.mode}`);
+
   if (!hidden) {
     return (
       <>
@@ -30,7 +35,7 @@ const FooterIllustrationsV2 = props => {
             alt='mask'
             className={className}
             {...(height && { height })}
-            src={`/images/pages/auth-v2-mask-${theme.palette.mode}.png`}
+            src={src}
           />
         ) : typeof image === 'string' ? (
           <MaskImg alt='mask' src={image} className={className} {...(height && { height })} />
