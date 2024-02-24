@@ -1,16 +1,16 @@
 'use client';
 
-import axios from 'axios';
+import axiosRequest from 'src/axios/axiosRequest';
 import authConfig from 'src/configs/auth';
 import { create } from 'zustand';
+
 
 export const useUserStore = () => create((set) => ({
   user: null,
   loading: false,
   setUser: (data) => set((state) => ({ ...state, user: data })),
   login: (data) => new Promise((resolve, reject) => {
-    axios
-      .post(authConfig.loginEndpoint, data)
+    axiosRequest(authConfig.loginEndpoint, 'post', data)
       .then(response => {
         set({ user: response.data.userData })
 
@@ -24,8 +24,7 @@ export const useUserStore = () => create((set) => ({
       .catch(reject)
   }),
   register: (data) => new Promise((resolve, reject) => {
-    axios
-      .post(authConfig.registerEndpoint, data)
+    axiosRequest(authConfig.registerEndpoint, 'post', data)
       .then(resolve)
       .catch(reject)
   }),
@@ -38,8 +37,7 @@ export const useUserStore = () => create((set) => ({
   forgotMyPassword: (data) => new Promise((resolve, reject) => {
     const token = window.localStorage.getItem(authConfig.storageTokenKeyName);
 
-    axios
-      .post(authConfig.forgotMyPasswordEndpoint, { ...data, token })
+    axiosRequest(authConfig.forgotMyPasswordEndpoint, 'post', { ...data, token })
       .then(resolve)
       .catch(reject)
   })
