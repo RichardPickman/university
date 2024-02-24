@@ -1,7 +1,8 @@
 import { Box, Link } from "@mui/material";
 import { styled } from "@mui/system";
+import Image from "next/image";
 
-export const AuthIllustration = styled('img')(({ theme }) => ({
+export const AuthIllustration = styled(Image)(({ theme }) => ({
     zIndex: 2,
     maxHeight: 680,
     marginTop: theme.spacing(12),
