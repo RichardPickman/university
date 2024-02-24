@@ -6,9 +6,11 @@ import { useTheme } from "@mui/material/styles";
 import { useSearchParams } from "next/navigation";
 import FooterIllustrationsV2 from "src/views/pages/auth/FooterIllustrationsV2";
 
-import { VuexyIcon } from "src/widgets/auth/ui/VuexyIcon";
-import { Wrapper } from "src/widgets/auth/ui/Wrapper";
-import { AuthIllustration } from "src/widgets/auth/ui/styled";
+import { VuexyIcon } from "src/widgets/auth/shared/VuexyIcon";
+import { Wrapper } from "src/widgets/auth/shared/Wrapper";
+import { AuthIllustration } from "src/widgets/auth/shared/styled";
+
+import { useStaticImages } from "src/hooks/useStaticImages";
 
 const VerifyEmail = () => {
     const params = useSearchParams();
@@ -16,6 +18,10 @@ const VerifyEmail = () => {
 
     const theme = useTheme();
     const hidden = useMediaQuery(theme.breakpoints.down("md"));
+
+    const { src } = useStaticImages(
+        `forgot-password-illustration-${theme.palette.mode}`
+    );
 
     return (
         <Box
@@ -37,7 +43,12 @@ const VerifyEmail = () => {
                 >
                     <AuthIllustration
                         alt="forgot-password-illustration"
-                        src={`/images/pages/auth-v2-forgot-password-illustration-${theme.palette.mode}.png`}
+                        sx={{
+                            width: "100%",
+                            objectFit: "contain",
+                        }}
+                        fill
+                        src={src}
                     />
                     <FooterIllustrationsV2 />
                 </Box>

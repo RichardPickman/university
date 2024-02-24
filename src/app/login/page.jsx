@@ -4,9 +4,10 @@ import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useSettings } from "src/core/hooks/useSettings";
+import { useStaticImages } from "src/hooks/useStaticImages";
 import FooterIllustrationsV2 from "src/views/pages/auth/FooterIllustrationsV2";
 import { LoginWidget } from "src/widgets/auth/login";
-import { AuthIllustration } from "src/widgets/auth/ui/styled";
+import { AuthIllustration } from "src/widgets/auth/shared/styled";
 
 const LoginPage = () => {
     const theme = useTheme();
@@ -17,8 +18,10 @@ const LoginPage = () => {
 
     const imageSource =
         skin === "bordered"
-            ? "auth-v2-login-illustration-bordered"
-            : "auth-v2-login-illustration";
+            ? "login-illustration-bordered"
+            : "login-illustration";
+
+    const { src } = useStaticImages(`${imageSource}-${theme.palette.mode}`);
 
     return (
         <Box
@@ -29,7 +32,6 @@ const LoginPage = () => {
                 <Box
                     sx={{
                         flex: 1,
-                        display: "flex",
                         position: "relative",
                         alignItems: "center",
                         borderRadius: "20px",
@@ -39,8 +41,12 @@ const LoginPage = () => {
                     }}
                 >
                     <AuthIllustration
-                        alt="login-illustration"
-                        src={`/images/pages/${imageSource}-${theme.palette.mode}.png`}
+                        sx={{
+                            width: "100%",
+                            objectFit: "contain",
+                        }}
+                        fill
+                        src={src}
                     />
                     <FooterIllustrationsV2 />
                 </Box>

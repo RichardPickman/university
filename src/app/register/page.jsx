@@ -4,9 +4,10 @@ import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useSettings } from "src/core/hooks/useSettings";
+import { useStaticImages } from "src/hooks/useStaticImages";
 import FooterIllustrationsV2 from "src/views/pages/auth/FooterIllustrationsV2";
 import { RegisterWidget } from "src/widgets/auth/register";
-import { AuthIllustration } from "src/widgets/auth/ui/styled";
+import { AuthIllustration } from "src/widgets/auth/shared/styled";
 
 const Register = () => {
     const theme = useTheme();
@@ -16,8 +17,10 @@ const Register = () => {
     const { skin } = settings;
     const imageSource =
         skin === "bordered"
-            ? "auth-v2-register-illustration-bordered"
-            : "auth-v2-register-illustration";
+            ? "register-illustration-bordered"
+            : "register-illustration";
+
+    const { src } = useStaticImages(`${imageSource}-${theme.palette.mode}`);
 
     return (
         <Box
@@ -38,8 +41,13 @@ const Register = () => {
                     }}
                 >
                     <AuthIllustration
-                        alt="register-illustration"
-                        src={`/images/pages/${imageSource}-${theme.palette.mode}.png`}
+                        alt="login-illustration"
+                        sx={{
+                            width: "100%",
+                            objectFit: "contain",
+                        }}
+                        fill
+                        src={src}
                     />
                     <FooterIllustrationsV2 />
                 </Box>
