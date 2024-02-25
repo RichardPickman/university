@@ -8,10 +8,11 @@ import Checkbox from "@mui/material/Checkbox";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import Typography from "@mui/material/Typography";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import CustomTextField from "src/core/components/mui/text-field";
-import { useAuth } from "src/hooks/useAuth";
+import { useUserStore } from "src/store/userStore";
 import { LinkStyled } from "src/widgets/auth/shared/styled";
 import * as yup from "yup";
 import { passwordSchema } from "../../shared/helpers";
@@ -22,14 +23,15 @@ const schema = yup.object().shape({
 });
 
 const defaultValues = {
-    password: "admin",
-    email: "admin@vuexy.com",
+    password: "123Qweasd,.",
+    email: "drezzerock+123123@gmail.com",
 };
 
 export const LoginForm = () => {
     const [rememberMe, setRememberMe] = useState(true);
     const [showPassword, setShowPassword] = useState(false);
-    const auth = useAuth();
+    const { login } = useUserStore().getState();
+    const router = useRouter();
 
     const {
         control,
@@ -43,13 +45,19 @@ export const LoginForm = () => {
     });
 
     const onSubmit = (data) => {
-        const { email, password } = data;
-        auth.login({ email, password, rememberMe }, (err) => {
-            setError("email", {
-                type: "manual",
-                message: err.error,
+        login({ ...data, rememberMe })
+            .then(() => {
+                router.push("/dashboard");
+
+                console.log("Successfully logged in!");
+            })
+            .catch((err) => {
+                console.log(err);
+                setError("email", {
+                    type: "manual",
+                    message: err.response.data.error,
+                });
             });
-        });
     };
 
     return (

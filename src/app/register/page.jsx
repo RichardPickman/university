@@ -9,7 +9,7 @@ import FooterIllustrationsV2 from "src/views/pages/auth/FooterIllustrationsV2";
 import { RegisterWidget } from "src/widgets/auth/register";
 import { AuthIllustration } from "src/widgets/auth/shared/styled";
 
-const Register = () => {
+const Page = () => {
     const theme = useTheme();
     const { settings } = useSettings();
     const hidden = useMediaQuery(theme.breakpoints.down("md"));
@@ -57,6 +57,7 @@ const Register = () => {
     );
 };
 
-Register.guestGuard = true;
+Page.authGuard = false;
+Page.guestGuard = true;
 
-export default Register;
+export default Page;

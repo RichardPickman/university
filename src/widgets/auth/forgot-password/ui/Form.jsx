@@ -7,7 +7,7 @@ import { Box } from "@mui/system";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import CustomTextField from "src/core/components/mui/text-field";
-import { useAuth } from "src/hooks/useAuth";
+import { useUserStore } from "src/store/userStore";
 import * as yup from "yup";
 import { passwordSchema } from "../../shared/helpers";
 import { LinkStyled } from "../../shared/styled";
@@ -19,7 +19,7 @@ const schema = yup.object().shape({
 
 export const ForgotPasswordForm = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const auth = useAuth();
+    const { forgotMyPassword } = useUserStore().getState();
 
     const {
         control,
@@ -32,13 +32,19 @@ export const ForgotPasswordForm = () => {
     });
 
     const onSubmit = (data) => {
-        auth.forgotMyPassword(data, (err) => {
-            console.log(err);
-            setError("password", {
-                type: "manual",
-                message: err.error,
+        forgotMyPassword(data)
+            .then(() => {
+                const returnUrl = params.get("returnUrl");
+
+                router.push(returnUrl ? returnUrl : "/");
+            })
+            .catch((err) => {
+                console.log(err);
+                setError("password", {
+                    type: "manual",
+                    message: err.error,
+                });
             });
-        });
     };
 
     return (

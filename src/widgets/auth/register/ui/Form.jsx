@@ -3,10 +3,11 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { Button, IconButton, InputAdornment } from "@mui/material";
 import { Box } from "@mui/system";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import CustomTextField from "src/core/components/mui/text-field";
-import { useAuth } from "src/hooks/useAuth";
+import { useUserStore } from "src/store/userStore";
 import * as yup from "yup";
 import { passwordSchema } from "../../shared/helpers";
 
@@ -18,7 +19,9 @@ const schema = yup.object().shape({
 
 export const RegisterForm = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const auth = useAuth();
+    const { register } = useUserStore().getState();
+    const router = useRouter();
+    const params = useSearchParams();
 
     const {
         control,
@@ -31,14 +34,18 @@ export const RegisterForm = () => {
     });
 
     const onSubmit = (data) => {
-        const { email, password, password2 } = data;
+        register(data)
+            .then(() => {
+                const returnUrl = params.get("returnUrl");
 
-        auth.register({ email, password, password2 }, (err) => {
-            setError("email", {
-                type: "manual",
-                message: err.error,
+                router.push(returnUrl ? returnUrl : "/login");
+            })
+            .catch((err) => {
+                setError("email", {
+                    type: "manual",
+                    message: err.message,
+                });
             });
-        });
     };
 
     return (

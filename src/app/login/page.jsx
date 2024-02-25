@@ -9,7 +9,7 @@ import FooterIllustrationsV2 from "src/views/pages/auth/FooterIllustrationsV2";
 import { LoginWidget } from "src/widgets/auth/login";
 import { AuthIllustration } from "src/widgets/auth/shared/styled";
 
-const LoginPage = () => {
+const Page = () => {
     const theme = useTheme();
     const { settings } = useSettings();
     const hidden = useMediaQuery(theme.breakpoints.down("md"));
@@ -55,6 +55,7 @@ const LoginPage = () => {
     );
 };
 
-LoginPage.guestGuard = true;
+Page.authGuard = false;
+Page.guestGuard = true;
 
-export default LoginPage;
+export default Page;

@@ -8,7 +8,7 @@ import FooterIllustrationsV2 from "src/views/pages/auth/FooterIllustrationsV2";
 import { ForgotPasswordWidget } from "src/widgets/auth/forgot-password";
 import { AuthIllustration } from "src/widgets/auth/shared/styled";
 
-const ForgotPassword = () => {
+const Page = () => {
     const theme = useTheme();
     const hidden = useMediaQuery(theme.breakpoints.down("md"));
     const src =
@@ -49,6 +49,7 @@ const ForgotPassword = () => {
     );
 };
 
-ForgotPassword.guestGuard = false;
+Page.authGuard = false;
+Page.guestGuard = true;
 
-export default ForgotPassword;
+export default Page;
