@@ -52,7 +52,6 @@ export const LoginForm = () => {
                 console.log("Successfully logged in!");
             })
             .catch((err) => {
-                console.log(err);
                 setError("email", {
                     type: "manual",
                     message: err.response.data.error,

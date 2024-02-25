@@ -39,7 +39,6 @@ export const ForgotPasswordForm = () => {
                 router.push(returnUrl ? returnUrl : "/");
             })
             .catch((err) => {
-                console.log(err);
                 setError("password", {
                     type: "manual",
                     message: err.error,

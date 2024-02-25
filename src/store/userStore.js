@@ -73,7 +73,5 @@ export const useUserStore = () => userStore
 
 prefetchSavedUser()
   .then(user => {
-    console.log({ user, loading: false }, 'TRUE');
-
     userStore.setState(() => ({ user, loading: false }))
   })

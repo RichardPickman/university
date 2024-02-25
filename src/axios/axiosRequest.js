@@ -83,8 +83,6 @@ const axiosRequest = async (url, verb = "get", data) => {
     response = await bearerInstance.delete(url, data)
   }
 
-  console.log(response);
-
   if ((response.data && response.data.error) || !response.data) {
     throw new Error(response.data.error || "Undefined response data")
   }
