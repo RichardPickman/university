@@ -13,9 +13,7 @@ const LoginPage = () => {
     const theme = useTheme();
     const { settings } = useSettings();
     const hidden = useMediaQuery(theme.breakpoints.down("md"));
-
     const { skin } = settings;
-
     const imageSource =
         skin === "bordered"
             ? "login-illustration-bordered"
@@ -25,15 +23,17 @@ const LoginPage = () => {
 
     return (
         <Box
-            className="content-right"
+            className="content-center"
             sx={{ backgroundColor: "background.paper" }}
         >
             {hidden ? null : (
                 <Box
                     sx={{
-                        flex: 1,
+                        display: "flex",
                         position: "relative",
+                        width: "100%",
                         alignItems: "center",
+                        flexDirection: "column",
                         borderRadius: "20px",
                         justifyContent: "center",
                         backgroundColor: "customColors.bodyBg",
@@ -45,7 +45,6 @@ const LoginPage = () => {
                             width: "100%",
                             objectFit: "contain",
                         }}
-                        fill
                         src={src}
                     />
                     <FooterIllustrationsV2 />

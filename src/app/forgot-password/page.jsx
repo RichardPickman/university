@@ -16,16 +16,17 @@ const ForgotPassword = () => {
 
     return (
         <Box
-            className="content-right"
+            className="content-center"
             sx={{ backgroundColor: "background.paper" }}
         >
-            {!hidden ? (
+            {hidden ? null : (
                 <Box
                     sx={{
-                        flex: 1,
                         display: "flex",
                         position: "relative",
+                        width: "100%",
                         alignItems: "center",
+                        flexDirection: "column",
                         borderRadius: "20px",
                         justifyContent: "center",
                         backgroundColor: "customColors.bodyBg",
@@ -33,17 +34,15 @@ const ForgotPassword = () => {
                     }}
                 >
                     <AuthIllustration
-                        alt="forgot-password-illustration"
                         sx={{
                             width: "100%",
                             objectFit: "contain",
                         }}
-                        fill
                         src={src}
                     />
                     <FooterIllustrationsV2 />
                 </Box>
-            ) : null}
+            )}
 
             <ForgotPasswordWidget />
         </Box>
