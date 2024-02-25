@@ -18,15 +18,15 @@ import Spinner from 'src/core/components/spinner';
 import BlankLayout from 'src/core/layouts/BlankLayout';
 
 // ** Hooks
-import { useAuth } from 'src/hooks/useAuth';
 
 // ** Util Import
 import getHomeRoute from 'src/layouts/components/acl/getHomeRoute';
+import { useUserStore } from 'src/store/userStore';
 
 const AclGuard = props => {
   const { aclAbilities, children, guestGuard = true, authGuard = false } = props
 
-  const auth = useAuth()
+  const auth = useUserStore().getState();
   const router = useRouter()
 
   let ability

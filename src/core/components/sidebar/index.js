@@ -23,7 +23,7 @@ const Sidebar = props => {
   }, [onClose, onOpen, show])
 
   return (
-    <aside>
+    <Box sx={{ position: 'relative' }}>
       <Box
         sx={{
           top: 0,
@@ -60,7 +60,7 @@ const Sidebar = props => {
       >
         {show ? <ChevronLeftIcon /> : <ChevronRightIcon />}
       </Button>
-    </aside >
+    </Box >
   )
 }
 

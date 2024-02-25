@@ -2,28 +2,38 @@
 
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import { useAuth } from 'src/hooks/useAuth';
+import { useUserStore } from 'src/store/userStore';
 
 const AuthGuard = props => {
   const { children } = props
-  const auth = useAuth();
+  const user = useUserStore().getState().user;
   const router = useRouter();
   const path = usePathname();
 
   useEffect(() => {
-    if (auth.user === null && !window.localStorage.getItem('userData')) {
-      const isAuth = [
-        path === '/login/',
-        path === '/register/',
-        path === '/verify-email/',
-        path === '/forgot-password/',
-      ].some(Boolean);
+    const isAuth = [
+      path === '/login/',
+      path === '/register/',
+      path === '/verify-email/',
+      path === '/forgot-password/',
+    ]
+
+    if (user) {
+      isAuth.some(Boolean);
+
+      if (isAuth) {
+        router.push('/dashboard')
+      }
+    }
+
+    if (user === null && !window.localStorage.getItem('userData')) {
+      isAuth.some(Boolean);
 
       if (!isAuth) {
         router.push('/login')
       }
     }
-  }, [auth.user, path, router])
+  }, [user, path, router])
 
   return <>{children}</>
 }

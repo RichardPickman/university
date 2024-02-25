@@ -1,6 +1,8 @@
 import axios from "axios"
 
-const instance = axios.create({})
+const instance = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
+})
 
 instance.interceptors.response.use(undefined, async (error) => {
   error.config.retries = error.config.retries || 0

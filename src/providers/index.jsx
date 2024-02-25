@@ -19,15 +19,15 @@ const Guard = ({ children, authGuard, guestGuard }) => {
         return <GuestGuard fallback={<Spinner />}>{children}</GuestGuard>;
     }
 
-    if (!guestGuard && !authGuard) {
-        return <>{children}</>;
+    if (authGuard) {
+        return <AuthGuard fallback={<Spinner />}>{children}</AuthGuard>;
     }
 
-    return <AuthGuard fallback={<Spinner />}>{children}</AuthGuard>;
+    return <>{children}</>;
 };
 
 export const Providers = ({ children }) => {
-    const authGuard = false;
+    const authGuard = true;
     const guestGuard = true;
     const aclAbilities = defaultACLObj;
 

@@ -1,8 +1,7 @@
-import Cookies from 'js-cookie';
 
 export const getAccessToken = () => {
-    const accessToken = Cookies.get('refreshToken');
-    const refreshToken = Cookies.get('refreshToken');
+    const accessToken = window.localStorage.getItem('accessToken');
+    const refreshToken = window.localStorage.getItem('refreshToken');
 
     return {
         accessToken,
