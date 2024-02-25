@@ -3,7 +3,7 @@
 import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { useStaticImages } from "src/hooks/useStaticImages";
+import { staticImagePaths } from "src/helpers/imageMapper";
 import FooterIllustrationsV2 from "src/views/pages/auth/FooterIllustrationsV2";
 import { ForgotPasswordWidget } from "src/widgets/auth/forgot-password";
 import { AuthIllustration } from "src/widgets/auth/shared/styled";
@@ -11,9 +11,8 @@ import { AuthIllustration } from "src/widgets/auth/shared/styled";
 const ForgotPassword = () => {
     const theme = useTheme();
     const hidden = useMediaQuery(theme.breakpoints.down("md"));
-    const { src } = useStaticImages(
-        `forgot-password-illustration-${theme.palette.mode}`
-    );
+    const src =
+        staticImagePaths[`forgot-password-illustration-${theme.palette.mode}`];
 
     return (
         <Box

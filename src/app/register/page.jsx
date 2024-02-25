@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useSettings } from "src/core/hooks/useSettings";
-import { useStaticImages } from "src/hooks/useStaticImages";
+import { staticImagePaths } from "src/helpers/imageMapper";
 import FooterIllustrationsV2 from "src/views/pages/auth/FooterIllustrationsV2";
 import { RegisterWidget } from "src/widgets/auth/register";
 import { AuthIllustration } from "src/widgets/auth/shared/styled";
@@ -20,7 +20,7 @@ const Register = () => {
             ? "register-illustration-bordered"
             : "register-illustration";
 
-    const { src } = useStaticImages(`${imageSource}-${theme.palette.mode}`);
+    const src = staticImagePaths[`${imageSource}-${theme.palette.mode}`];
 
     return (
         <Box

@@ -11,25 +11,18 @@ import registerIllustrationLight from "public/images/pages/auth-v2-register-illu
 import miscMaskDark from "public/images/pages/misc-mask-dark.png";
 import miscMaskLight from "public/images/pages/misc-mask-light.png";
 
-export const useStaticImages = (path) => {
-    console.log(path);
-    const paths = {
-        "forgot-password-illustration-dark": forgotPasswordIllustrationDark,
-        "forgot-password-illustration-light": forgotPasswordIllustrationLight,
-        "login-illustration-bordered-dark": LoginIllustrationBorderedDark,
-        "login-illustration-bordered-light": LoginIllustrationBorderedlight,
-        "login-illustration-dark": LoginIllustrationDark,
-        "login-illustration-light": LoginIllustrationLight,
-        "register-illustration-bordered-dark": registerIllustrationBorderedDark,
-        "register-illustration-bordered-light":
-            registerIllustrationBorderedLight,
-        "register-illustration-dark": registerIllustrationDark,
-        "register-illustration-light": registerIllustrationLight,
-        "misc-mask-dark": miscMaskDark,
-        "misc-mask-light": miscMaskLight,
-    };
-
-    return {
-        src: paths[path],
-    };
+export const staticImagePaths = {
+    "forgot-password-illustration-dark": forgotPasswordIllustrationDark,
+    "forgot-password-illustration-light": forgotPasswordIllustrationLight,
+    "login-illustration-bordered-dark": LoginIllustrationBorderedDark,
+    "login-illustration-bordered-light": LoginIllustrationBorderedlight,
+    "login-illustration-dark": LoginIllustrationDark,
+    "login-illustration-light": LoginIllustrationLight,
+    "register-illustration-bordered-dark": registerIllustrationBorderedDark,
+    "register-illustration-bordered-light":
+        registerIllustrationBorderedLight,
+    "register-illustration-dark": registerIllustrationDark,
+    "register-illustration-light": registerIllustrationLight,
+    "misc-mask-dark": miscMaskDark,
+    "misc-mask-light": miscMaskLight,
 };

@@ -2,7 +2,7 @@
 import { styled, useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import Image from 'next/image'
-import { useStaticImages } from 'src/hooks/useStaticImages'
+import { staticImagePaths } from 'src/helpers/imageMapper'
 
 // Styled Components
 const MaskImg = styled(Image)(({ theme }) => ({
@@ -25,7 +25,7 @@ const FooterIllustrationsV2 = props => {
   // ** Vars
   const hidden = useMediaQuery(theme.breakpoints.down('md'))
 
-  const { src } = useStaticImages(`misc-mask-${theme.palette.mode}`);
+  const src = staticImagePaths[`misc-mask-${theme.palette.mode}`];
 
   if (!hidden) {
     return (

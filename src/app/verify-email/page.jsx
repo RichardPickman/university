@@ -10,7 +10,7 @@ import { VuexyIcon } from "src/widgets/auth/shared/VuexyIcon";
 import { Wrapper } from "src/widgets/auth/shared/Wrapper";
 import { AuthIllustration } from "src/widgets/auth/shared/styled";
 
-import { useStaticImages } from "src/hooks/useStaticImages";
+import { staticImagePaths } from "src/helpers/imageMapper";
 
 const VerifyEmail = () => {
     const params = useSearchParams();
@@ -19,9 +19,8 @@ const VerifyEmail = () => {
     const theme = useTheme();
     const hidden = useMediaQuery(theme.breakpoints.down("md"));
 
-    const { src } = useStaticImages(
-        `forgot-password-illustration-${theme.palette.mode}`
-    );
+    const src =
+        staticImagePaths[`forgot-password-illustration-${theme.palette.mode}`];
 
     return (
         <Box

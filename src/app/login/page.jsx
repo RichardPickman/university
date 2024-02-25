@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useSettings } from "src/core/hooks/useSettings";
-import { useStaticImages } from "src/hooks/useStaticImages";
+import { staticImagePaths } from "src/helpers/imageMapper";
 import FooterIllustrationsV2 from "src/views/pages/auth/FooterIllustrationsV2";
 import { LoginWidget } from "src/widgets/auth/login";
 import { AuthIllustration } from "src/widgets/auth/shared/styled";
@@ -21,7 +21,7 @@ const LoginPage = () => {
             ? "login-illustration-bordered"
             : "login-illustration";
 
-    const { src } = useStaticImages(`${imageSource}-${theme.palette.mode}`);
+    const src = staticImagePaths[`${imageSource}-${theme.palette.mode}`];
 
     return (
         <Box
