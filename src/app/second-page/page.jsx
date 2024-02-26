@@ -26,4 +26,6 @@ const SecondPage = () => {
     );
 };
 
+SecondPage.guestGuard = true;
+
 export default SecondPage;

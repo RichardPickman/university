@@ -13,7 +13,7 @@ import { Box } from "@mui/system";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Sidebar from "src/core/components/sidebar";
-import { useUserStore } from "src/store/userStore";
+import { logout } from "src/store/userStore";
 import { UNICIcon } from "src/views/pages/misc/UNICIcon";
 
 const AppItem = ({ icon, text }) => (
@@ -104,7 +104,6 @@ const Header = ({ headerHeight, onClick }) => (
 
 const Page = () => {
     const [isOpen, setOpen] = useState(true);
-    const logout = useUserStore().getState().logout;
     const headerHeight = 6;
     const sidebarWidth = 14;
     const router = useRouter();

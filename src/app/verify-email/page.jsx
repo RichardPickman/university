@@ -71,6 +71,4 @@ const VerifyEmail = () => {
     );
 };
 
-VerifyEmail.guestGuard = true;
-
 export default VerifyEmail;

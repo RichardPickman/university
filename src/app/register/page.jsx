@@ -32,7 +32,6 @@ const Page = () => {
     );
 };
 
-Page.authGuard = false;
 Page.guestGuard = true;
 
 export default Page;
