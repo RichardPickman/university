@@ -1,9 +1,9 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import LoadingButton from "@mui/lab/LoadingButton";
 import { FormControlLabel } from "@mui/material";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Checkbox from "@mui/material/Checkbox";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -12,7 +12,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import CustomTextField from "src/core/components/mui/text-field";
-import { useUserStore } from "src/store/userStore";
+import { login } from "src/store/userStore";
 import { LinkStyled } from "src/widgets/auth/shared/styled";
 import * as yup from "yup";
 import { passwordSchema } from "../../shared/helpers";
@@ -28,9 +28,9 @@ const defaultValues = {
 };
 
 export const LoginForm = () => {
+    const [isLoading, setLoading] = useState(false);
     const [rememberMe, setRememberMe] = useState(true);
     const [showPassword, setShowPassword] = useState(false);
-    const { login } = useUserStore().getState();
     const router = useRouter();
 
     const {
@@ -45,6 +45,8 @@ export const LoginForm = () => {
     });
 
     const onSubmit = (data) => {
+        setLoading(true);
+
         login({ ...data, rememberMe })
             .then(() => router.push("/dashboard"))
             .catch((err) => {
@@ -52,7 +54,8 @@ export const LoginForm = () => {
                     type: "manual",
                     message: err.response.data.error,
                 });
-            });
+            })
+            .finally(() => setLoading(false));
     };
 
     return (
@@ -144,9 +147,16 @@ export const LoginForm = () => {
                     Forgot Password?
                 </Typography>
             </Box>
-            <Button fullWidth type="submit" variant="contained" sx={{ mb: 4 }}>
+            <LoadingButton
+                fullWidth
+                type="submit"
+                variant="contained"
+                sx={{ mb: 4 }}
+                loading={isLoading}
+                loadingPosition="start"
+            >
                 Login
-            </Button>
+            </LoadingButton>
         </form>
     );
 };

@@ -2,12 +2,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { Button, IconButton, InputAdornment, Typography } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
+import { IconButton, InputAdornment, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import CustomTextField from "src/core/components/mui/text-field";
-import { useUserStore } from "src/store/userStore";
+import { forgotMyPassword } from "src/store/userStore";
 import * as yup from "yup";
 import { passwordSchema } from "../../shared/helpers";
 import { LinkStyled } from "../../shared/styled";
@@ -18,8 +19,8 @@ const schema = yup.object().shape({
 });
 
 export const ForgotPasswordForm = () => {
+    const [isLoading, setLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
-    const { forgotMyPassword } = useUserStore().getState();
 
     const {
         control,
@@ -32,6 +33,8 @@ export const ForgotPasswordForm = () => {
     });
 
     const onSubmit = (data) => {
+        setLoading(true);
+
         forgotMyPassword(data)
             .then(() => {
                 const returnUrl = params.get("returnUrl");
@@ -43,7 +46,8 @@ export const ForgotPasswordForm = () => {
                     type: "manual",
                     message: err.error,
                 });
-            });
+            })
+            .finally(() => setLoading(false));
     };
 
     return (
@@ -134,9 +138,16 @@ export const ForgotPasswordForm = () => {
                     )}
                 />
             </Box>
-            <Button fullWidth type="submit" variant="contained" sx={{ mb: 4 }}>
-                Change password
-            </Button>
+            <LoadingButton
+                fullWidth
+                type="submit"
+                variant="contained"
+                sx={{ mb: 4 }}
+                loading={isLoading}
+                loadingPosition="start"
+            >
+                Send
+            </LoadingButton>
             <Typography
                 sx={{
                     display: "flex",

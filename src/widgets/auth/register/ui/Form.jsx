@@ -1,13 +1,14 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { Button, IconButton, InputAdornment } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
+import { IconButton, InputAdornment } from "@mui/material";
 import { Box } from "@mui/system";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import CustomTextField from "src/core/components/mui/text-field";
-import { useUserStore } from "src/store/userStore";
+import { register } from "src/store/userStore";
 import * as yup from "yup";
 import { passwordSchema } from "../../shared/helpers";
 
@@ -18,8 +19,8 @@ const schema = yup.object().shape({
 });
 
 export const RegisterForm = () => {
+    const [isLoading, setLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
-    const { register } = useUserStore().getState();
     const router = useRouter();
     const params = useSearchParams();
 
@@ -34,6 +35,8 @@ export const RegisterForm = () => {
     });
 
     const onSubmit = (data) => {
+        setLoading(true);
+
         register(data)
             .then(() => {
                 const returnUrl = params.get("returnUrl");
@@ -45,7 +48,8 @@ export const RegisterForm = () => {
                     type: "manual",
                     message: err.message,
                 });
-            });
+            })
+            .finally(() => setLoading(false));
     };
 
     return (
@@ -156,9 +160,16 @@ export const RegisterForm = () => {
                     )}
                 />
             </Box>
-            <Button fullWidth type="submit" variant="contained" sx={{ mb: 4 }}>
+            <LoadingButton
+                fullWidth
+                type="submit"
+                variant="contained"
+                sx={{ mb: 4 }}
+                loading={isLoading}
+                loadingPosition="start"
+            >
                 Sign up
-            </Button>
+            </LoadingButton>
         </form>
     );
 };
