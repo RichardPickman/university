@@ -20,41 +20,42 @@ import BlankLayout from 'src/core/layouts/BlankLayout';
 // ** Hooks
 
 // ** Util Import
+import { useStore } from 'src/hooks/useStore';
 import getHomeRoute from 'src/layouts/components/acl/getHomeRoute';
-import { useUserStore } from 'src/store/userStore';
+import { userStore } from 'src/store/userStore';
 
 const AclGuard = props => {
   const { aclAbilities, children, guestGuard = true, authGuard = false } = props
 
-  const auth = useUserStore().getState();
+  const user = useStore(userStore, (state) => state.user);
   const router = useRouter()
 
   let ability
 
   useEffect(() => {
-    if (auth.user && auth.user.role && !guestGuard && router.route === '/') {
-      const homeRoute = getHomeRoute(auth.user.role)
+    if (user && user.role && !guestGuard && router.route === '/') {
+      const homeRoute = getHomeRoute(user.role)
 
       router.push(homeRoute)
     }
-  }, [auth.user, guestGuard, router])
+  }, [user, guestGuard, router])
 
-  if (auth.user && !ability) {
-    ability = buildAbilityFor(auth.user.role, aclAbilities.subject)
+  if (user && !ability) {
+    ability = buildAbilityFor(user.role, aclAbilities.subject)
     if (router.route === '/') {
       return <Spinner />
     }
   }
 
   if (guestGuard || router.route === '/404' || router.route === '/500' || !authGuard) {
-    if (auth.user && ability) {
+    if (user && ability) {
       return <AbilityContext.Provider value={ability}>{children}</AbilityContext.Provider>
     } else {
       return children
     }
   }
 
-  if (ability && auth.user && ability.can(aclAbilities.action, aclAbilities.subject)) {
+  if (ability && user && ability.can(aclAbilities.action, aclAbilities.subject)) {
     if (router.route === '/') {
       return <Spinner />
     }

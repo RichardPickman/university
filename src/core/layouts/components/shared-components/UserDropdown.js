@@ -20,7 +20,7 @@ import { styled } from '@mui/material/styles';
 import Icon from 'src/core/components/icon';
 
 // ** Context
-import { useUserStore } from 'src/store/userStore';
+import { logout } from 'src/store/userStore';
 
 // ** Styled Components
 const BadgeContentSpan = styled('span')(({ theme }) => ({
@@ -46,7 +46,6 @@ const UserDropdown = props => {
 
   // ** Hooks
   const router = useRouter()
-  const { logout } = useUserStore().getState();
 
   // ** Vars
   const { direction } = settings
@@ -79,6 +78,7 @@ const UserDropdown = props => {
 
   const handleLogout = () => {
     logout()
+
     handleDropdownClose()
   }
 

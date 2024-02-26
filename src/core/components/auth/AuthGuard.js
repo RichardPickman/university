@@ -2,11 +2,12 @@
 
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import { useUserStore } from 'src/store/userStore';
+import { useStore } from 'src/hooks/useStore';
+import { userStore } from 'src/store/userStore';
 
 const AuthGuard = props => {
   const { children } = props
-  const user = useUserStore().getState().user;
+  const user = useStore(userStore, (state) => state.user);
   const router = useRouter();
   const path = usePathname();
 
