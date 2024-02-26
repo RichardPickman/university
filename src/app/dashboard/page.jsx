@@ -5,14 +5,16 @@ import BubbleChartIcon from "@mui/icons-material/BubbleChart";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import FolderIcon from "@mui/icons-material/Folder";
 import HomeIcon from "@mui/icons-material/Home";
+import LogoutIcon from "@mui/icons-material/Logout";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 import Shop2Icon from "@mui/icons-material/Shop2";
-import { Button, Divider, Typography } from "@mui/material";
+import { Divider, IconButton, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Sidebar from "src/core/components/sidebar";
 import { useUserStore } from "src/store/userStore";
+import { UNICIcon } from "src/views/pages/misc/UNICIcon";
 
 const AppItem = ({ icon, text }) => (
     <Box
@@ -70,7 +72,9 @@ const Header = ({ headerHeight, onClick }) => (
             height: headerHeight + "rem",
         }}
     >
-        <Box>UNIC</Box>
+        <Box>
+            <UNICIcon />
+        </Box>
         <Box
             sx={{
                 display: "flex",
@@ -91,7 +95,9 @@ const Header = ({ headerHeight, onClick }) => (
             </MenuItem>
         </Box>
         <Box>
-            <Button onClick={onClick}>Logout</Button>
+            <IconButton onClick={onClick}>
+                <LogoutIcon fontSize="large" />
+            </IconButton>
         </Box>
     </Box>
 );
