@@ -5,9 +5,8 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useSettings } from "src/core/hooks/useSettings";
 import { staticImagePaths } from "src/helpers/imageMapper";
-import FooterIllustrationsV2 from "src/views/pages/auth/FooterIllustrationsV2";
 import { LoginWidget } from "src/widgets/auth/login";
-import { AuthIllustration } from "src/widgets/auth/shared/styled";
+import { IllustrationWrapper } from "src/widgets/auth/shared/IllustrationWrapper";
 
 const Page = () => {
     const theme = useTheme();
@@ -26,30 +25,7 @@ const Page = () => {
             className="content-center"
             sx={{ backgroundColor: "background.paper" }}
         >
-            {hidden ? null : (
-                <Box
-                    sx={{
-                        display: "flex",
-                        position: "relative",
-                        width: "100%",
-                        alignItems: "center",
-                        flexDirection: "column",
-                        borderRadius: "20px",
-                        justifyContent: "center",
-                        backgroundColor: "customColors.bodyBg",
-                        margin: (theme) => theme.spacing(8, 0, 8, 8),
-                    }}
-                >
-                    <AuthIllustration
-                        sx={{
-                            width: "100%",
-                            objectFit: "contain",
-                        }}
-                        src={src}
-                    />
-                    <FooterIllustrationsV2 />
-                </Box>
-            )}
+            <IllustrationWrapper isHidden={hidden} src={src} />
             <LoginWidget />
         </Box>
     );

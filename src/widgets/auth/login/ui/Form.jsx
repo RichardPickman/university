@@ -46,11 +46,7 @@ export const LoginForm = () => {
 
     const onSubmit = (data) => {
         login({ ...data, rememberMe })
-            .then(() => {
-                router.push("/dashboard");
-
-                console.log("Successfully logged in!");
-            })
+            .then(() => router.push("/dashboard"))
             .catch((err) => {
                 setError("email", {
                     type: "manual",

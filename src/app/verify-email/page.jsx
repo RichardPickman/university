@@ -4,13 +4,12 @@ import { Button, Typography, useMediaQuery } from "@mui/material";
 import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material/styles";
 import { useSearchParams } from "next/navigation";
-import FooterIllustrationsV2 from "src/views/pages/auth/FooterIllustrationsV2";
 
 import { VuexyIcon } from "src/widgets/auth/shared/VuexyIcon";
 import { Wrapper } from "src/widgets/auth/shared/Wrapper";
-import { AuthIllustration } from "src/widgets/auth/shared/styled";
 
 import { staticImagePaths } from "src/helpers/imageMapper";
+import { IllustrationWrapper } from "src/widgets/auth/shared/IllustrationWrapper";
 
 const VerifyEmail = () => {
     const params = useSearchParams();
@@ -27,30 +26,7 @@ const VerifyEmail = () => {
             className="content-center"
             sx={{ backgroundColor: "background.paper" }}
         >
-            {hidden ? null : (
-                <Box
-                    sx={{
-                        display: "flex",
-                        position: "relative",
-                        width: "100%",
-                        alignItems: "center",
-                        flexDirection: "column",
-                        borderRadius: "20px",
-                        justifyContent: "center",
-                        backgroundColor: "customColors.bodyBg",
-                        margin: (theme) => theme.spacing(8, 0, 8, 8),
-                    }}
-                >
-                    <AuthIllustration
-                        sx={{
-                            width: "100%",
-                            objectFit: "contain",
-                        }}
-                        src={src}
-                    />
-                    <FooterIllustrationsV2 />
-                </Box>
-            )}
+            <IllustrationWrapper isHidden={hidden} src={src} />
 
             <Wrapper>
                 <VuexyIcon />
