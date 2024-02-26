@@ -44,7 +44,7 @@ export const ForgotPasswordForm = () => {
             .catch((err) => {
                 setError("password", {
                     type: "manual",
-                    message: err.error,
+                    message: err.response.data.error,
                 });
             })
             .finally(() => setLoading(false));
