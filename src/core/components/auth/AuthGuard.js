@@ -35,7 +35,7 @@ const AuthGuard = props => {
     }
   }, [user, path, router])
 
-  return <>{children}</>
+  return children
 }
 
 export default AuthGuard

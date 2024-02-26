@@ -23,8 +23,8 @@ const schema = yup.object().shape({
 });
 
 const defaultValues = {
-    password: "admin",
-    email: "admin@vuexy.com",
+    email: "drezzerock+11222222@gmail.com",
+    password: "123Qweasd,.",
 };
 
 export const LoginForm = () => {

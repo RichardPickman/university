@@ -7,12 +7,93 @@ import FolderIcon from "@mui/icons-material/Folder";
 import HomeIcon from "@mui/icons-material/Home";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 import Shop2Icon from "@mui/icons-material/Shop2";
-import { Button, Divider, IconButton, Typography } from "@mui/material";
+import { Button, Divider, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Sidebar from "src/core/components/sidebar";
 import { useUserStore } from "src/store/userStore";
+
+const AppItem = ({ icon, text }) => (
+    <Box
+        sx={{
+            height: "6rem",
+            width: "6rem",
+            cursor: "pointer",
+        }}
+    >
+        <Box
+            sx={{
+                backgroundColor: "background.paper",
+                height: "100%",
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                borderRadius: "1rem",
+            }}
+        >
+            {icon}
+        </Box>
+        <Typography sx={{ marginTop: 2, fontWeight: "bold" }}>
+            {text}
+        </Typography>
+    </Box>
+);
+
+const MenuItem = ({ children }) => (
+    <Box
+        sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 2,
+            alignItems: "center",
+            borderRadius: 1,
+            padding: 2,
+            cursor: "pointer",
+            ":hover": {
+                backgroundColor: "background.paper",
+            },
+        }}
+    >
+        {children}
+    </Box>
+);
+
+const Header = ({ headerHeight, onClick }) => (
+    <Box
+        sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            height: headerHeight + "rem",
+        }}
+    >
+        <Box>UNIC</Box>
+        <Box
+            sx={{
+                display: "flex",
+                gap: 6,
+            }}
+        >
+            <MenuItem>
+                <HomeIcon fontSize="large" />
+                <Typography sx={{ fontWeight: "bold" }}>Dashboard</Typography>
+            </MenuItem>
+            <MenuItem>
+                <AppsIcon fontSize="large" />
+                <Typography sx={{ fontWeight: "bold" }}>My Apps</Typography>
+            </MenuItem>
+            <MenuItem>
+                <Shop2Icon fontSize="large" />
+                <Typography sx={{ fontWeight: "bold" }}>App Store</Typography>
+            </MenuItem>
+        </Box>
+        <Box>
+            <Button onClick={onClick}>Logout</Button>
+        </Box>
+    </Box>
+);
 
 const Page = () => {
     const [isOpen, setOpen] = useState(true);
@@ -31,30 +112,7 @@ const Page = () => {
 
     return (
         <Box sx={{ height: "100vh" }}>
-            <Box
-                sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    height: headerHeight + "rem",
-                }}
-            >
-                <Box>UNIC</Box>
-                <Box>
-                    <IconButton>
-                        <HomeIcon fontSize="large" />
-                    </IconButton>
-                    <IconButton>
-                        <AppsIcon fontSize="large" />
-                    </IconButton>
-                    <IconButton>
-                        <Shop2Icon fontSize="large" />
-                    </IconButton>
-                </Box>
-                <Box>
-                    <Button onClick={onLogoutClick}>Logout</Button>
-                </Box>
-            </Box>
+            <Header headerHeight={headerHeight} onClick={onLogoutClick} />
             <Box
                 id="menu-box"
                 sx={{ display: "flex", height: "100%", position: "relative" }}
@@ -102,116 +160,22 @@ const Page = () => {
                             textAlign: "center",
                         }}
                     >
-                        <Box
-                            sx={{
-                                height: "6rem",
-                                width: "6rem",
-                                cursor: "pointer",
-                            }}
-                        >
-                            <Box
-                                sx={{
-                                    backgroundColor: "background.paper",
-                                    height: "6rem",
-                                    width: "6rem",
-                                    display: "flex",
-                                    justifyContent: "center",
-                                    alignItems: "center",
-                                    borderRadius: "1rem",
-                                }}
-                            >
-                                <ChatBubbleIcon fontSize="large" />
-                            </Box>
-                            <Typography
-                                sx={{ marginTop: 2, fontWeight: "bold" }}
-                            >
-                                Powerflow
-                            </Typography>
-                        </Box>
-                        <Box
-                            sx={{
-                                height: "6rem",
-                                width: "6rem",
-                                cursor: "pointer",
-                            }}
-                        >
-                            <Box
-                                sx={{
-                                    backgroundColor: "background.paper",
-                                    height: "6rem",
-                                    width: "6rem",
-                                    display: "flex",
-                                    justifyContent: "center",
-                                    alignItems: "center",
-                                    borderRadius: "1rem",
-                                }}
-                            >
-                                <RocketLaunchIcon fontSize="large" />
-                            </Box>
-                            <Typography
-                                sx={{
-                                    marginTop: 2,
-                                    fontWeight: "bold",
-                                }}
-                            >
-                                Accelerate System
-                            </Typography>
-                        </Box>
-                        <Box
-                            sx={{
-                                height: "6rem",
-                                width: "6rem",
-                                cursor: "pointer",
-                            }}
-                        >
-                            <Box
-                                sx={{
-                                    backgroundColor: "background.paper",
-                                    display: "flex",
-                                    height: "6rem",
-                                    width: "6rem",
-                                    justifyContent: "center",
-                                    alignItems: "center",
-                                    borderRadius: "1rem",
-                                }}
-                            >
-                                <BubbleChartIcon fontSize="large" />
-                            </Box>
-                            <Typography
-                                sx={{
-                                    marginTop: 2,
-                                    fontWeight: "bold",
-                                }}
-                            >
-                                Knowledge Graph
-                            </Typography>
-                        </Box>
-                        <Box
-                            sx={{
-                                height: "6rem",
-                                width: "6rem",
-                                cursor: "pointer",
-                            }}
-                        >
-                            <Box
-                                sx={{
-                                    backgroundColor: "background.paper",
-                                    height: "6rem",
-                                    width: "6rem",
-                                    display: "flex",
-                                    justifyContent: "center",
-                                    alignItems: "center",
-                                    borderRadius: "1rem",
-                                }}
-                            >
-                                <FolderIcon fontSize="large" />
-                            </Box>
-                            <Typography
-                                sx={{ marginTop: 2, fontWeight: "bold" }}
-                            >
-                                My files
-                            </Typography>
-                        </Box>
+                        <AppItem
+                            icon={<ChatBubbleIcon fontSize="large" />}
+                            text={"Powerflow"}
+                        />
+                        <AppItem
+                            icon={<RocketLaunchIcon fontSize="large" />}
+                            text={"Accelerate System"}
+                        />
+                        <AppItem
+                            icon={<BubbleChartIcon fontSize="large" />}
+                            text={"Knowledge Graph"}
+                        />
+                        <AppItem
+                            icon={<FolderIcon fontSize="large" />}
+                            text={"My files"}
+                        />
                     </Box>
                 </Box>
             </Box>
@@ -220,6 +184,5 @@ const Page = () => {
 };
 
 Page.authGuard = true;
-Page.guestGuard = false;
 
 export default Page;

@@ -6,6 +6,8 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
+import Image from "next/image";
+import Error401Image from 'public/images/pages/401.png';
 import BlankLayout from "src/core/layouts/BlankLayout";
 import FooterIllustrations from "src/views/pages/misc/FooterIllustrations";
 
@@ -15,7 +17,7 @@ const BoxWrapper = styled(Box)(({ theme }) => ({
     },
 }));
 
-const Img = styled("img")(({ theme }) => ({
+const Img = styled(Image)(({ theme }) => ({
     [theme.breakpoints.down("lg")]: {
         height: 450,
         marginTop: theme.spacing(10),
@@ -58,7 +60,7 @@ const Error401 = () => {
                 <Img
                     height="500"
                     alt="error-illustration"
-                    src="/images/pages/401.png"
+                    src={Error401Image}
                 />
             </Box>
             <FooterIllustrations />

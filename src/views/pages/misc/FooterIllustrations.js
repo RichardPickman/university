@@ -1,9 +1,11 @@
 // ** MUI Components
-import useMediaQuery from '@mui/material/useMediaQuery'
 import { styled, useTheme } from '@mui/material/styles'
+import useMediaQuery from '@mui/material/useMediaQuery'
+import Image from 'next/image'
+import { staticImagePaths } from 'src/helpers/imageMapper'
 
 // Styled Components
-const MaskImg = styled('img')(() => ({
+const MaskImg = styled(Image)(() => ({
   bottom: 0,
   zIndex: -1,
   height: 260,
@@ -16,7 +18,9 @@ const FooterIllustrations = props => {
   const { image } = props
 
   // ** Hook
-  const theme = useTheme()
+  const theme = useTheme();
+
+  const src = staticImagePaths[`misc-mask-${theme.palette.mode}`]
 
   // ** Vars
   const hidden = useMediaQuery(theme.breakpoints.down('md'))
@@ -24,7 +28,7 @@ const FooterIllustrations = props => {
     return (
       <>
         {!image ? (
-          <MaskImg alt='mask' src={`/images/pages/misc-mask-${theme.palette.mode}.png`} />
+          <MaskImg alt='mask' src={src} />
         ) : typeof image === 'string' ? (
           <MaskImg alt='mask' src={image} />
         ) : (

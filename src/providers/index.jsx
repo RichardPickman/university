@@ -27,7 +27,7 @@ const Guard = ({ children, authGuard, guestGuard }) => {
 };
 
 export const Providers = ({ children }) => {
-    const authGuard = true;
+    const authGuard = false;
     const guestGuard = true;
     const aclAbilities = defaultACLObj;
 
