@@ -30,7 +30,7 @@ const AppItem = ({ icon, text }) => (
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                borderRadius: "1rem",
+                borderRadius: 1,
             }}
         >
             {icon}
@@ -66,6 +66,7 @@ const Header = ({ headerHeight, onClick }) => (
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
+            paddingX: 4,
             height: headerHeight + "rem",
         }}
     >
@@ -149,7 +150,7 @@ const Page = () => {
                         transition: "all 0.25s ease-in-out",
                     }}
                 >
-                    <Typography sx={{ fontWeight: "bold" }}>
+                    <Typography variant="h3" sx={{ fontWeight: "bold" }}>
                         Frequently used apps
                     </Typography>
                     <Box

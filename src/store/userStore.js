@@ -1,5 +1,3 @@
-'use client';
-
 import axiosRequest from 'src/axios/axiosRequestWithoutBearer';
 import { getAccessToken } from 'src/axios/getAccessToken';
 import authConfig from 'src/configs/auth';
@@ -43,6 +41,8 @@ const userStore = create((set) => ({
   loading: false,
   setUser: (data) => set(() => ({ user: data })),
   login: async (data) => {
+    set({ loading: true });
+
     const response = await axiosRequest(authConfig.loginEndpoint, 'post', data);
 
     set({ user: { ...data, role: 'client' } })
@@ -52,20 +52,31 @@ const userStore = create((set) => ({
       window.localStorage.setItem(authConfig.storageTokenKeyName, response.data.accessToken)
       window.localStorage.setItem('refreshToken', response.data.refreshToken)
     }
+
+    set({ loading: false });
   },
   register: async (data) => {
-    return await axiosRequest(authConfig.registerEndpoint, 'post', data)
+    set({ loading: true });
+
+    await axiosRequest(authConfig.registerEndpoint, 'post', data)
+
+    set({ loading: false });
   },
   logout: () => {
     set(() => ({ user: null }))
 
     window.localStorage.removeItem('userData')
     window.localStorage.removeItem(authConfig.storageTokenKeyName)
+    window.localStorage.removeItem('refreshToken')
   },
   forgotMyPassword: async (data) => {
+    set({ loading: true });
+
     const token = window.localStorage.getItem(authConfig.storageTokenKeyName);
 
     await axiosRequest(authConfig.forgotMyPasswordEndpoint, 'post', { ...data, token });
+
+    set({ loading: false });
   },
 }));
 

@@ -146,7 +146,7 @@ export const ForgotPasswordForm = () => {
                 }}
             >
                 <LinkStyled href="/login">
-                    <ChevronLeftIcon fontSize="1.25rem" />
+                    <ChevronLeftIcon fontSize="medium" />
                     <span>Back to login</span>
                 </LinkStyled>
             </Typography>
