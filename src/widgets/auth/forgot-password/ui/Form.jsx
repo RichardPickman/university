@@ -144,7 +144,6 @@ export const ForgotPasswordForm = () => {
                 variant="contained"
                 sx={{ mb: 4 }}
                 loading={isLoading}
-                loadingPosition="start"
             >
                 Send
             </LoadingButton>

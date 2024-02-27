@@ -166,7 +166,6 @@ export const RegisterForm = () => {
                 variant="contained"
                 sx={{ mb: 4 }}
                 loading={isLoading}
-                loadingPosition="start"
             >
                 Sign up
             </LoadingButton>

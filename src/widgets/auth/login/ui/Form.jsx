@@ -153,7 +153,6 @@ export const LoginForm = () => {
                 variant="contained"
                 sx={{ mb: 4 }}
                 loading={isLoading}
-                loadingPosition="start"
             >
                 Login
             </LoadingButton>
