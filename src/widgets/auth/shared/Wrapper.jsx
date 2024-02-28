@@ -1,4 +1,4 @@
-import { Box } from "@mui/system";
+import { Box } from "@mui/material";
 import { RightWrapper } from "./styled";
 
 export const Wrapper = ({ children }) => (

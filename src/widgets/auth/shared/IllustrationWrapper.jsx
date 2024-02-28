@@ -1,4 +1,4 @@
-import { Box } from "@mui/system";
+import { Box } from "@mui/material";
 import FooterIllustrationsV2 from "src/views/pages/auth/FooterIllustrationsV2";
 import { AuthIllustration } from "./styled";
 

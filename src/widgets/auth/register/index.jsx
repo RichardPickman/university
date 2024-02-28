@@ -1,7 +1,6 @@
 "use client";
 
-import { Divider, Typography, useTheme } from "@mui/material";
-import { Box } from "@mui/system";
+import { Box, Divider, Typography, useTheme } from "@mui/material";
 import { AuthProviders } from "../shared/AuthProviders";
 import { FormHeader } from "../shared/FormHeader";
 import { VuexyIcon } from "../shared/VuexyIcon";

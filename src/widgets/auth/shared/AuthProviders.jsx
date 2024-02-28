@@ -2,8 +2,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import GoogleIcon from "@mui/icons-material/Google";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import { IconButton } from "@mui/material";
-import { Box } from "@mui/system";
+import { Box, IconButton } from "@mui/material";
 import Link from "next/link";
 
 export const AuthProviders = () => {

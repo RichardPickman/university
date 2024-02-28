@@ -1,5 +1,4 @@
-import { Box, Link } from "@mui/material";
-import { styled } from "@mui/system";
+import { Box, Link, styled } from "@mui/material";
 import Image from "next/image";
 
 export const AuthIllustration = styled(Image)(({ theme }) => ({
