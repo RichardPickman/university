@@ -1,7 +1,9 @@
+'use client'
+
 // ** MUI Imports
-import { useTheme } from '@mui/material/styles'
-import Box from '@mui/material/Box'
+import { Box } from '@mui/material'
 import CircularProgress from '@mui/material/CircularProgress'
+import { useTheme } from '@mui/material/styles'
 
 const FallbackSpinner = ({ sx }) => {
   // ** Hook

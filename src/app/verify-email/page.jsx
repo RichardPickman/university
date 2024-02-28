@@ -1,7 +1,6 @@
 "use client";
 
-import { Button, Typography, useMediaQuery } from "@mui/material";
-import Box from "@mui/material/Box";
+import { Box, Button, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useSearchParams } from "next/navigation";
 

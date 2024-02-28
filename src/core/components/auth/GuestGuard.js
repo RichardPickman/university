@@ -9,7 +9,7 @@ const GuestGuard = props => {
 
   useEffect(() => {
     if (window.localStorage.getItem('userData')) {
-      router.push('/')
+      router.push('/dashboard')
     }
   }, [router])
 

@@ -30,7 +30,7 @@ export const UNICIcon = () => {
                     />
                 </clipPath>
             </defs>
-            <g class="b">
+            <g fill={fillers["b"]}>
                 <path
                     fill={fillers["c"]}
                     d="M28.727,63.811C12.887,63.811,0,51.42,0,36.189V0H57.458V36.191c0,15.23-12.888,27.62-28.731,27.62"

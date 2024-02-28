@@ -1,21 +1,12 @@
 'use client';
 
-// ** React Imports
-import { useEffect } from 'react';
-
-// ** Next Import
 import { useRouter } from 'next/navigation';
-
-// ** Context Imports
-import { AbilityContext } from 'src/layouts/components/acl/Can';
-
-// ** Config Import
-import { buildAbilityFor } from 'src/configs/acl';
-
-// ** Component Import
+import { useEffect } from 'react';
 import NotAuthorized from 'src/app/401';
+import { buildAbilityFor } from 'src/configs/acl';
 import Spinner from 'src/core/components/spinner';
 import BlankLayout from 'src/core/layouts/BlankLayout';
+import { AbilityContext } from 'src/layouts/components/acl/Can';
 
 // ** Hooks
 

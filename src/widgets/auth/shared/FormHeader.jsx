@@ -1,5 +1,4 @@
-const { Typography } = require("@mui/material");
-const { Box } = require("@mui/system");
+import { Box, Typography } from "@mui/material";
 
 export const FormHeader = ({ header, subheader }) => (
     <Box sx={{ my: 6 }}>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Box } from "@mui/system";
+import { Box } from "@mui/material";
 import Link from "next/link";
 
 const Home = () => {
@@ -11,6 +11,7 @@ const Home = () => {
         </Box>
     );
 };
+
 Home.authGuard = false;
 Home.guestGuard = true;
 

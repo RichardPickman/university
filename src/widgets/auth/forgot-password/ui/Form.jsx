@@ -3,8 +3,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { LoadingButton } from "@mui/lab";
-import { IconButton, InputAdornment, Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import { Box, IconButton, InputAdornment, Typography } from "@mui/material";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import CustomTextField from "src/core/components/mui/text-field";
@@ -144,7 +143,6 @@ export const ForgotPasswordForm = () => {
                 variant="contained"
                 sx={{ mb: 4 }}
                 loading={isLoading}
-                loadingPosition="start"
             >
                 Send
             </LoadingButton>

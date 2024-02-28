@@ -2,8 +2,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import LoadingButton from "@mui/lab/LoadingButton";
-import { FormControlLabel } from "@mui/material";
-import Box from "@mui/material/Box";
+import { Box, FormControlLabel } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -153,7 +152,6 @@ export const LoginForm = () => {
                 variant="contained"
                 sx={{ mb: 4 }}
                 loading={isLoading}
-                loadingPosition="start"
             >
                 Login
             </LoadingButton>

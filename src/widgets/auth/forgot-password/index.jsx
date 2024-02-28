@@ -1,7 +1,6 @@
 "use client";
 
-import { Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import { Box, Typography } from "@mui/material";
 import { Wrapper } from "../shared/Wrapper";
 import { ForgotPasswordForm } from "./ui/Form";
 
