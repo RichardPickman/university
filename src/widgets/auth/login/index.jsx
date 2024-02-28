@@ -1,8 +1,7 @@
 "use client";
 
-import { Divider, useTheme } from "@mui/material";
+import { Box, Divider, useTheme } from "@mui/material";
 import Alert from "@mui/material/Alert";
-import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import themeConfig from "src/configs/themeConfig";
 import useBgColor from "src/core/hooks/useBgColor";

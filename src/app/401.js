@@ -1,8 +1,10 @@
+'use client';
+
 // ** Next Import
 import Link from "next/link";
 
 // ** MUI Components
-import Box from "@mui/material/Box";
+import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
