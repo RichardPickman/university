@@ -65,6 +65,9 @@ dependencies:
   '@mui/material':
     specifier: 5.12.2
     version: 5.12.2(@emotion/react@11.10.8)(@emotion/styled@11.10.8)(react-dom@18.2.0)(react@18.2.0)
+  '@mui/material-nextjs':
+    specifier: ^5.15.11
+    version: 5.15.11(@emotion/cache@11.10.8)(@emotion/server@11.10.0)(@mui/material@5.12.2)(next@14.1.0)(react@18.2.0)
   '@mui/system':
     specifier: 5.12.1
     version: 5.12.1(@emotion/react@11.10.8)(@emotion/styled@11.10.8)(react@18.2.0)
@@ -146,9 +149,6 @@ dependencies:
   react-chartjs-2:
     specifier: 5.2.0
     version: 5.2.0(chart.js@4.3.0)(react@18.2.0)
-  react-credit-cards:
-    specifier: 0.8.3
-    version: 0.8.3(prop-types@15.8.1)(react@18.2.0)
   react-datepicker:
     specifier: 4.11.0
     version: 4.11.0(react-dom@18.2.0)(react@18.2.0)
@@ -831,6 +831,32 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-is: 18.2.0
+    dev: false
+
+  /@mui/material-nextjs@5.15.11(@emotion/cache@11.10.8)(@emotion/server@11.10.0)(@mui/material@5.12.2)(next@14.1.0)(react@18.2.0):
+    resolution: {integrity: sha512-cp5RWYbBngyi7NKP91R9QITllfxumCVPFjqe4AKzNROVuCot0VpgkafxXqfbv0uFsyUU0ROs0O2M3r17q604Aw==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      '@emotion/cache': ^11.11.0
+      '@emotion/server': ^11.11.0
+      '@mui/material': ^5.0.0
+      '@types/react': ^17.0.0 || ^18.0.0
+      next: ^13.0.0 || ^14.0.0
+      react: ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@emotion/cache':
+        optional: true
+      '@emotion/server':
+        optional: true
+      '@types/react':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.23.9
+      '@emotion/cache': 11.10.8
+      '@emotion/server': 11.10.0
+      '@mui/material': 5.12.2(@emotion/react@11.10.8)(@emotion/styled@11.10.8)(react-dom@18.2.0)(react@18.2.0)
+      next: 14.1.0(@babel/core@7.21.5)(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
     dev: false
 
   /@mui/material@5.12.2(@emotion/react@11.10.8)(@emotion/styled@11.10.8)(react-dom@18.2.0)(react@18.2.0):
@@ -3534,17 +3560,6 @@ packages:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       chart.js: 4.3.0
-      react: 18.2.0
-    dev: false
-
-  /react-credit-cards@0.8.3(prop-types@15.8.1)(react@18.2.0):
-    resolution: {integrity: sha512-88XJErkkdDjeFevOxfWYV2dUs4ddNNXJMIgutqTlUH2pYfcaDeFv9MXNGCcJKvBv4+6GEnxbCToymNRNbEt/uw==}
-    peerDependencies:
-      prop-types: ^15.7.2
-      react: ^15.0.0 || ^16.0.0
-    dependencies:
-      payment: 2.4.6
-      prop-types: 15.8.1
       react: 18.2.0
     dev: false
 
