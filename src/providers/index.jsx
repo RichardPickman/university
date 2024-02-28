@@ -1,5 +1,3 @@
-"use client";
-
 import { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
 import { defaultACLObj } from "src/configs/acl";
