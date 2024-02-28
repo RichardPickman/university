@@ -1,5 +1,3 @@
-'use client';
-
 import axiosRequest from 'src/axios/axiosRequestWithoutBearer';
 import { getAccessToken } from 'src/axios/getAccessToken';
 import authConfig from 'src/configs/auth';
